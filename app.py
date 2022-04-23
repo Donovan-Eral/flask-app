@@ -1,9 +1,7 @@
-from src.app import create_app
-import sys
-
-sys.path.append("src")
+from flask import Flask
+app = Flask(__name__)
 
 
-if __name__ == '__main__':
-    app = create_app()
-    app.run(debug=True)
+@app.route('/')
+def hello_world():
+    return 'Hello, Austin!'

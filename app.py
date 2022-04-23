@@ -1,6 +1,6 @@
 from flask import Flask
-from src.extensions import db
-from src.routes.user import user
+# from src.extensions import db
+# from src.routes.user import user
 
 
 app = Flask(__name__)

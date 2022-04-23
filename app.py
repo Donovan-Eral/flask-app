@@ -7,8 +7,3 @@ app = Flask(__name__)
 app.config.from_object('src.config.Config')
 db.init_app(app)
 app.register_blueprint(user)
-
-
-# @app.route('/')
-# def hello_world():
-#     return 'Hello, Austin!'

@@ -73,7 +73,7 @@ def signup():
 # -----------------------------------GET----------------------------------- #
 # Getting all users
 @user.route('/get_all', methods=['GET'])
-@valid_token_required
+# @valid_token_required
 def get_all(current_user):
     users = User.query.all()
     users_list = []
@@ -91,7 +91,7 @@ def get_all(current_user):
 
 # Getting a user by their public id
 @user.route('/get_by_id/<public_id>', methods=['GET'])
-@valid_token_required
+# @valid_token_required
 def get_by_id(current_user, public_id):
     user = User.query.filter_by(public_id=public_id).first()
     if not user:
@@ -108,7 +108,7 @@ def get_by_id(current_user, public_id):
 
 # Getting the current user
 @user.route('/get_self', methods=['GET'])
-@valid_token_required
+# @valid_token_required
 def get_self(current_user):
     user_data = {
         'public_id': current_user.public_id,
@@ -123,7 +123,7 @@ def get_self(current_user):
 # -----------------------------------PUT----------------------------------- #
 # Promotes a user to admin
 @user.route('/promote/<public_id>', methods=['PUT'])
-@valid_token_required
+# @valid_token_required
 def promote(current_user, public_id):
     user = User.query.filter_by(public_id=public_id).first()
     if not user:
@@ -138,7 +138,7 @@ def promote(current_user, public_id):
 
 
 @user.route('/demote/<public_id>', methods=['PUT'])
-@valid_token_required
+# @valid_token_required
 def demote(current_user, public_id):
     user = User.query.filter_by(public_id=public_id).first()
     if not user:
@@ -155,7 +155,7 @@ def demote(current_user, public_id):
 # -----------------------------------DELETE-------------------------------- #
 # Deleting a user by id
 @user.route('/delete_by_id/<public_id>', methods=['DELETE'])
-@valid_token_required
+# @valid_token_required
 def delete_by_id(current_user, public_id):
     user = User.query.filter_by(public_id=public_id).first()
     if not user:
@@ -168,7 +168,7 @@ def delete_by_id(current_user, public_id):
 
 # Delete this user
 @user.route('/delete_self', methods=['DELETE'])
-@valid_token_required
+# @valid_token_required
 def delete_self(current_user):
     db.session.delete(current_user)
     db.session.commit()

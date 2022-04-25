@@ -6,7 +6,7 @@ import jwt
 import datetime
 from functools import wraps
 
-from app.extensions import db
+from app import db
 from app.models.user import User
 from app.permissions import PERMISSIONS
 

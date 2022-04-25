@@ -26,8 +26,7 @@ def valid_token_required(f):
             return jsonify({'message': 'Token is missing!'}), 401
 
         try:
-            data = jwt.decode(token, environ.get(
-                'SECRET_KEY'), algorithms=['HS256'])
+            data = jwt.decode(token, 'secret', algorithms=['HS256'])
             current_user = User.query.filter_by(
                 public_id=data['public_id']).first()
         except jwt.exceptions.InvalidTokenError:
@@ -194,7 +193,7 @@ def login():
         token = jwt.encode({
             'public_id': user.public_id,
             'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)
-        }, environ.get('SECRET_KEY'), algorithm='HS256')
+        }, 'secret', algorithm='HS256')
 
         return jsonify({'token': token}), 200
 

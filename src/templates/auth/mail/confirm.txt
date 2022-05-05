@@ -1,0 +1,11 @@
+Hello, {{ user.username }},
+
+This is Donovan's application.
+
+Please confirm your account by clicking on the link below:
+
+{{ url_for('auth.confirm', token=token, _external=True) }}
+
+Thank you,
+
+Donovan
